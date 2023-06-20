@@ -3,7 +3,7 @@
 require_once "models/Model.php";
 class APIManager extends Model{//Système d héritage avec extends
     public function getDBAnimaux(){
-        $req = "SELECT * FROM animal";//On veut aller à la table animal de la BDD
+        $req = "SELECT * FROM animal";//
         $stmt = $this-> getBdd()->prepare($req);//préparer une requête SQL à exécuter sur une base de données.
         // Voici une explication ligne par ligne :
         //  $stmt est une variable qui sera utilisée pour stocker la requête préparée.

@@ -1,25 +1,9 @@
 <?php
 
 require_once "models/Model.php";
-class APIManager extends Model{//Système d héritage avec extends
+class APIManager extends Model{
     public function getDBAnimaux(){
-        $req = "SELECT * FROM animal";//On veut aller à la table animal de la BDD
-        $stmt = $this-> getBdd()->prepare($req);//préparer une requête SQL à exécuter sur une base de données.
-        // Voici une explication ligne par ligne :
-        //  $stmt est une variable qui sera utilisée pour stocker la requête préparée.
-        // $this fait référence à l'objet actuel, c'est-à-dire à l'objet dans lequel cette ligne de
-        //  code est exécutée.
-        // getBdd() est une méthode qui est appelée sur l'objet actuel pour obtenir une instance de la 
-        // connexion à la base de données. Cette méthode pourrait être définie dans la classe à laquelle appartient cet objet.
-        // prepare($req) est une méthode appelée sur l'objet de connexion à la base de données.
-        //  Elle prend en paramètre une requête SQL sous forme de chaîne de caractères ($req) et 
-        //  prépare cette requête pour exécution ultérieure. La requête peut contenir des paramètres de
-        //   requête, qui peuvent être liés à des valeurs spécifiques lors de l'exécution.
-       
-        $stmt->execute();//execute() est une méthode appelée sur l'objet de requête préparée ($stmt). Cette méthode exécute la requête préparée avec les paramètres éventuellement liés à des valeurs spécifiques.
-        $animaux = $stmt->fetchAll(PDO::FETCH_ASSOC);//cette ligne de code exécute la méthode fetchAll() sur l'objet de requête préparée ($stmt) pour récupérer tous les résultats de la requête dans un tableau associatif. Le tableau résultant est ensuite assigné à la variable $animaux pour une utilisation ultérieure. Chaque élément du tableau correspond à une ligne de résultat de la requête, avec les noms de colonnes correspondants aux clés du tableau.
-        $stmt->closeCursor();//cette ligne de code est utilisée pour fermer le curseur de la requête après avoir récupéré les résultats. Cela permet de libérer les ressources utilisées par la requête sur le serveur de base de données.
-        return $animaux;
+        
     }
 }
 

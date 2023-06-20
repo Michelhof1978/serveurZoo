@@ -20,8 +20,8 @@ class APIController {
 
     public function getAnimaux(){
         $animaux = $this->apiManager->getDBAnimaux();//on crée une nouvelle variable animaux pour récupérer toutes les datas de la BDD des animaux que le manager s'occupera de récupérer
-    echo "<pre>";//pour formater et afficher les données de sortie de manière lisible.
-    print_r($animaux);//http://localhost/serveurzoo/front/animaux  = affichage de la liste des animaux sous forme de tableau
+    echo "<pre>";
+    print
     echo "</pre>";
 }
 
