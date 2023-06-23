@@ -82,31 +82,19 @@ public function getDBAnimal($idAnimal){
 // la conception et des besoins de l'application. Il n'y a pas de définition stricte et universelle d'un manager dans
 //  l'architecture MVC, mais les points mentionnés ci-dessus représentent généralement les tâches effectuées par cette
 //   classe dans ce contexte.*
-// -------------------------------------------------------------------------------------------------------------------
-// L'utilisation d'un manager dans l'architecture Modèle-Vue-Contrôleur (MVC) est une pratique courante pour gérer la logique métier 
-// et la manipulation des données au sein d'une application. Voici quelques raisons pour lesquelles il est utile d'utiliser un manager
-//  dans le contexte du MVC :
+-------------------------------------------------------------------------------------------------------------------
+L'utilisation d'un manager dans l'architecture Modèle-Vue-Contrôleur (MVC) est une pratique courante pour gérer la logique métier 
+et la manipulation des données au sein d'une application. Voici quelques raisons pour lesquelles il est utile d'utiliser un manager
+ dans le contexte du MVC :
 
-// 1. Séparation des responsabilités : Le principe fondamental du MVC est de séparer les différentes responsabilités de l'application. Le manager joue un rôle clé en prenant en charge la logique métier et la gestion des données, ce qui permet de séparer clairement ces responsabilités du contrôleur et de la vue. Cela rend le code plus modulaire, maintenable et évolutif.
+1. Séparation des responsabilités : Le principe fondamental du MVC est de séparer les différentes responsabilités de l'application. Le manager joue un rôle clé en prenant en charge la logique métier et la gestion des données, ce qui permet de séparer clairement ces responsabilités du contrôleur et de la vue. Cela rend le code plus modulaire, maintenable et évolutif.
 
-// 2. Logique métier centralisée : Le manager agit comme une couche intermédiaire entre le contrôleur et le modèle. Il encapsule la
-//  logique métier spécifique à l'application, ce qui facilite sa réutilisation et sa maintenance. Plutôt que de répéter la même 
-//  logique métier dans plusieurs contrôleurs, celle-ci peut être centralisée dans un manager qui peut être appelé à partir de
-//   différents contrôleurs.
+2. Logique métier centralisée : Le manager agit comme une couche intermédiaire entre le contrôleur et le modèle. Il encapsule la logique métier spécifique à l'application, ce qui facilite sa réutilisation et sa maintenance. Plutôt que de répéter la même logique métier dans plusieurs contrôleurs, celle-ci peut être centralisée dans un manager qui peut être appelé à partir de différents contrôleurs.
 
-// 3. Manipulation des données : Le manager peut gérer les opérations de lecture, d'écriture et de manipulation des données
-//  nécessaires à l'application. Il peut encapsuler des requêtes complexes à la base de données ou à d'autres sources de données, 
-//  et fournir des méthodes simples et cohérentes pour les contrôleurs pour interagir avec les données.
+3. Manipulation des données : Le manager peut gérer les opérations de lecture, d'écriture et de manipulation des données nécessaires à l'application. Il peut encapsuler des requêtes complexes à la base de données ou à d'autres sources de données, et fournir des méthodes simples et cohérentes pour les contrôleurs pour interagir avec les données.
 
-// 4. Gestion des transactions : Dans certains cas, le manager peut également prendre en charge la gestion des transactions.
-//  Lorsqu'une opération nécessite des modifications cohérentes sur plusieurs modèles ou sources de données, le manager peut
-//   garantir que ces modifications sont effectuées de manière atomique (soit toutes les modifications réussissent, soit aucune ne 
-//   réussit) en utilisant des mécanismes de transaction.
+4. Gestion des transactions : Dans certains cas, le manager peut également prendre en charge la gestion des transactions. Lorsqu'une opération nécessite des modifications cohérentes sur plusieurs modèles ou sources de données, le manager peut garantir que ces modifications sont effectuées de manière atomique (soit toutes les modifications réussissent, soit aucune ne réussit) en utilisant des mécanismes de transaction.
 
-// 5. Tests unitaires : L'utilisation d'un manager facilite également les tests unitaires. Étant donné que la logique métier est 
-// centralisée dans le manager, il est plus facile de tester cette logique indépendamment des autres composants de l'application.
-//  Cela permet d'effectuer des tests unitaires plus ciblés et plus efficaces.
+5. Tests unitaires : L'utilisation d'un manager facilite également les tests unitaires. Étant donné que la logique métier est centralisée dans le manager, il est plus facile de tester cette logique indépendamment des autres composants de l'application. Cela permet d'effectuer des tests unitaires plus ciblés et plus efficaces.
 
-// En résumé, l'utilisation d'un manager dans le MVC permet de séparer la logique métier et la manipulation des données du contrôleur 
-// et de la vue, favorisant ainsi la modularité, la réutilisation et la maintenabilité du code. Il facilite également les tests 
-// unitaires et offre une couche intermédiaire pour encapsuler la logique spécifique à l'application.
+En résumé, l'utilisation d'un manager dans le MVC permet de séparer la logique métier et la manipulation des données du contrôleur et de la vue, favorisant ainsi la modularité, la réutilisation et la maintenabilité du code. Il facilite également les tests unitaires et offre une couche intermédiaire pour encapsuler la logique spécifique à l'application.

@@ -30,7 +30,7 @@ public function getAnimal($idAnimal){
 }
 
 public function getContinents(){
-    $lignesAnimal = $this -> apiManager-> getDBAnimal(idAnimal);
+    $lignesAnimal = $this -> apiManager-> getDBAnimal(idAn);
 }
 
 public function getFamilies(){

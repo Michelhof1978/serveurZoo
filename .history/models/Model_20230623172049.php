@@ -3,7 +3,7 @@
 abstract class Model {
     private static $pdo;
 
-    private static function setBdd(){//setBdd va gérer la connexion et en va charger cette connexion ds $pdo
+    private static function setBdd(){//setBdd va gérer la connexion et en va ccette connexion ds $pdo
         self::$pdo = new PDO("mysql:host=localhost;dbname=dbanimaux;charset=utf8","root","");//root =accés à la BDD et vide "" pour le MDP car je ne l ai pas sécurisé
         self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);//indique que l'attribut de mode d'affichage des erreurs de l'objet PDO $pdo est défini sur PDO::ERRMODE_WARNING, ce qui signifie que les avertissements seront émis lorsqu'il y a des erreurs.
     }
