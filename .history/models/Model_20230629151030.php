@@ -22,22 +22,7 @@ abstract class Model {//En héritant de la classe abstraite "Model", les classes
 
     public static function sendJSON($info){//Transformer les datas en format JSON pour API
         header("Access-Control-Allow-Origin: *");//Permettra à n'importe qui de l extérieur à accéder aux données JSON, * veut dire que tout le monde peut y accéder, si c'est uniquement pour un site, on remplacera * par l adresse du site
-        header("content-Type: application/json");
-            //              La ligne de code "header("content-Type: application/json");" en français signifie que l'en-tête de la 
-            //              réponse HTTP va indiquer que le contenu de la réponse est de type JSON. Voici une explication de chaque 
-            //              terme :
-            //                  - "header" : C'est une fonction en PHP utilisée pour envoyer des en-têtes HTTP. Les en-têtes HTTP 
-            //                              fournissent des informations supplémentaires sur la réponse que le serveur envoie au client. 
-            //                              Dans ce cas, la fonction "header" est utilisée pour définir l'en-tête "Content-Type".
-            //                  - "content-Type" : C'est un en-tête HTTP qui spécifie le type de contenu de la réponse. Il indique
-            //                                     comment le contenu de la réponse doit être interprété par le client. Dans ce cas, "content-Type" est
-            //                                     utilisé pour spécifier que le contenu de la réponse est de type JSON.
-            //                  - "application/json" : C'est la valeur spécifiée pour l'en-tête "Content-Type" qui indique que le
-            //                                      contenu de la réponse est au format JSON. JSON (JavaScript Object Notation) est un format de données largement utilisé pour échanger des données structurées entre un serveur et un client.
-            //  En résumé, la ligne de code "header("content-Type: application/json");" est utilisée pour spécifier que le contenu de
-            //   la réponse HTTP est de type JSON. Cela permet au client qui reçoit cette réponse de savoir comment interpréter les
-            //    données contenues dans la réponse.
-
+        h
         echo json_encode($info);
     }
 }

@@ -21,59 +21,20 @@ class APIController {
 
     public function getAnimaux(){
         $animaux = $this->apiManager->getDBAnimaux();//on crée une nouvelle variable animaux pour récupérer toutes les datas de la BDD des animaux que le manager s'occupera de récupérer
-        $tabResultat = $this->formatDataLignesAnimaux($animaux);
-
-    // echo "<pre>";//pour formater et afficher les données de sortie de manière lisible.
-    // print_r($animaux);//http://localhost/serveurzoo/front/animaux  = affichage de la liste des animaux sous forme de tableau
-    // echo "</pre>";
-    Model::sendJSON($tabResultat);
+    
+    echo "<pre>";//pour formater et afficher les données de sortie de manière lisible.
+    print_r($animaux);//http://localhost/serveurzoo/front/animaux  = affichage de la liste des animaux sous forme de tableau
+    echo "</pre>";
 }
 
 public function getAnimal($idAnimal){
     $lignesAnimal = $this->apiManager->getDBAnimal($idAnimal);
-    $tabResultat = $this->formatDataLignesAnimaux($lignesAnimal);
+    Model::sendJSON($AN);
     // echo "<pre>";
-    // print_r($tabResultat);
+    // print_r($lignesAnimal);
     // echo "</pre>";
-    Model::sendJSON($tabResultat);
 }
 
-private function formatDataLignesAnimaux($lignes){
-    $tab = [];
-    
-    foreach($lignes as $ligne){
-        if(!array_key_exists($ligne['animal_id'],$tab)){
-            $tab[$ligne['animal_id']] = [
-                "id" => $ligne['animal_id'],
-                "nom" => $ligne['animal_nom'],
-                "description" => $ligne['animal_description'],
-                "image" => $ligne['animal_image'],
-                "famille" => [
-                    "idFamille" => $ligne['famille_id'],
-                    "libelleFamille" => $ligne['famille_libelle'],
-                    "descriptionFamille" => $ligne['famille_description']
-                ]
-            ];
-        }
-       
-        $tab[$ligne['animal_id']]['continents'][] = [
-            "idContinent" => $ligne['continent_id'],
-            "libelleContinent" => $ligne['continent_libellé']
-        ];
-    }
-
-    return $tab;
-}
-// La fonction "formatDataLignesAnimaux" ci dessus est une méthode privée qui prend en paramètre un tableau de lignes de données. 
-// Elle formate ces données dans une structure spécifique et renvoie un nouveau tableau.
-// Voici une explication du fonctionnement de cette méthode :
-// - Au départ, un tableau vide est créé avec la variable "$tab". Ce tableau sera utilisé pour stocker les données formatées.
-// - Ensuite, une boucle "foreach" est utilisée pour parcourir chaque ligne de données dans le tableau d'entrée.
-// - Pour chaque ligne de données, la méthode vérifie si la clé correspondant à l'identifiant de l'animal existe déjà dans le tableau "$tab". Si la clé n'existe pas, cela signifie que c'est la première fois que l'animal est rencontré, donc une nouvelle entrée est ajoutée dans le tableau "$tab" avec les informations de base de l'animal telles que l'identifiant, le nom, la description, l'image, et les informations sur sa famille.
-// - Ensuite, les informations sur les continents auxquels l'animal appartient sont ajoutées à l'entrée correspondante dans le tableau "$tab". Ces informations sont ajoutées dans un sous-tableau appelé "continents". Chaque continent est représenté par un tableau associatif contenant son identifiant et son libellé.
-// - Après avoir parcouru toutes les lignes de données, le tableau "$tab" contient toutes les données formatées.
-// - Finalement, le tableau "$tab" est renvoyé en tant que résultat de la méthode.
-// En résumé, la fonction "formatDataLignesAnimaux" prend un tableau de lignes de données et renvoie un nouveau tableau contenant les données formatées selon une structure spécifique. Cette méthode est utilisée pour organiser les données sur les animaux, leurs familles et les continents auxquels ils appartiennent dans un format approprié pour une utilisation ultérieure.
 
     public function getContinents(){
         $continents = $this->apiManager->getDBContinents();

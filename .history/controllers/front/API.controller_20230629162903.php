@@ -58,7 +58,7 @@ private function formatDataLignesAnimaux($lignes){
        
         $tab[$ligne['animal_id']]['continents'][] = [
             "idContinent" => $ligne['continent_id'],
-            "libelleContinent" => $ligne['continent_libellé']
+            "libelleContinent" => $ligne['continent_libelle']
         ];
     }
 
