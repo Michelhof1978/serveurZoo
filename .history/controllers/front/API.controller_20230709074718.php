@@ -64,8 +64,7 @@ private function formatDataLignesAnimaux($lignes){
 
     return $tab;
 }
-// La fonction "formatDataLignesAnimaux" ci dessus est une méthode privée qui prend en paramètre 
-//un tableau de lignes de données. 
+// La fonction "formatDataLignesAnimaux" ci dessus est une méthode privée qui prend en paramètre un tableau de lignes de données. 
 // Elle formate ces données dans une structure spécifique et renvoie un nouveau tableau.
 // Voici une explication du fonctionnement de cette méthode :
 // - Au départ, un tableau vide est créé avec la variable "$tab". Ce tableau sera utilisé pour stocker les données formatées.

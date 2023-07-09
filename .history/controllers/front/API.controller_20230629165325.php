@@ -24,8 +24,8 @@ class APIController {
         $tabResultat = $this->formatDataLignesAnimaux($animaux);
 
     // echo "<pre>";//pour formater et afficher les données de sortie de manière lisible.
-    //  print_r($tabResultat);//http://localhost/serveurzoo/front/animaux  = affichage de la liste des animaux sous forme de tableau
-    //  echo "</pre>";
+    // print_r($tabResultat);//http://localhost/serveurzoo/front/animaux  = affichage de la liste des animaux sous forme de tableau
+    // echo "</pre>";
     Model::sendJSON($tabResultat);
 }
 
@@ -47,7 +47,7 @@ private function formatDataLignesAnimaux($lignes){
                 "id" => $ligne['animal_id'],
                 "nom" => $ligne['animal_nom'],
                 "description" => $ligne['animal_description'],
-                "image" => URL."public/images/".$ligne['animal_image'],//On va publier une images via une Url et ajouter les infos sur celle ci
+                "image" => $ligne['animal_image'],
                 "famille" => [
                     "idFamille" => $ligne['famille_id'],
                     "libelleFamille" => $ligne['famille_libelle'],
@@ -64,8 +64,7 @@ private function formatDataLignesAnimaux($lignes){
 
     return $tab;
 }
-// La fonction "formatDataLignesAnimaux" ci dessus est une méthode privée qui prend en paramètre 
-//un tableau de lignes de données. 
+// La fonction "formatDataLignesAnimaux" ci dessus est une méthode privée qui prend en paramètre un tableau de lignes de données. 
 // Elle formate ces données dans une structure spécifique et renvoie un nouveau tableau.
 // Voici une explication du fonctionnement de cette méthode :
 // - Au départ, un tableau vide est créé avec la variable "$tab". Ce tableau sera utilisé pour stocker les données formatées.

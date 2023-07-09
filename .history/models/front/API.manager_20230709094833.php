@@ -3,7 +3,7 @@
 require_once "models/Model.php";
 class APIManager extends Model{//Système d héritage avec extends
     public function getDBAnimaux(){//L'utilisation du modificateur public permet de rendre la 
-        //méthode accessible et utilisable de manière externe à la classe, ce qui est souvent 
+        méthode accessible et utilisable de manière externe à la classe, ce qui est souvent 
         //nécessaire pour interagir avec les objets de cette classe dans d'autres parties du code.
     //   -------------------------
         //Création en code de toutes les tables qui ont été crées ds la BDD avec toutes les jointures
