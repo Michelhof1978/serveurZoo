@@ -44,8 +44,7 @@ try{
                         if(empty($url[2])) throw new Exception ("L'identifiant de l'animal est manquant");
                         $apiController -> getAnimal($url[2]);// $idAnimal sera mis en 2 ème position de l'url, on récupère l id de l animal en 2 ème position de l'utl après le /
                     break;
-                    // FIN FILTRE DU SERVEUR URL
-                    
+                        // FIN FILTRE DU SERVEUR URL
                 //............................................................................
                     case "continents":$apiController -> getContinents();
                     break;

@@ -27,8 +27,7 @@ try{
                    case "animaux":
                     $apiController->getAnimaux($idFamille, $idContinent); // création route nommée "animaux", on récupère les infos dans API.controller.php grâce à la fonction getAnimaux
                     //........................................................................
-                  
-                    // FILTRE DU SERVEUR URL
+                   
                     if (!isset($url[2]) || !isset($url[3])) {
                         // Code à exécuter si $url[2] en position 2 de l'URL ou $url[3] en position 3 n'est pas défini
                         $apiController->getAnimaux(-1, -1);
@@ -39,13 +38,13 @@ try{
                     $apiController->getAnimaux($idFamille, $idContinent);
                     
                     break;
+                //............................................................................
 
                     case "animal":
                         if(empty($url[2])) throw new Exception ("L'identifiant de l'animal est manquant");
                         $apiController -> getAnimal($url[2]);// $idAnimal sera mis en 2 ème position de l'url, on récupère l id de l animal en 2 ème position de l'utl après le /
                     break;
-                    // FIN FILTRE DU SERVEUR URL
-                    
+                        // FIN FILTRE DU SERVEUR !!!
                 //............................................................................
                     case "continents":$apiController -> getContinents();
                     break;

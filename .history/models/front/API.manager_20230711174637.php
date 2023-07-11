@@ -24,15 +24,12 @@ class APIManager extends Model{//Système d héritage avec extends
                         
                      //méthode accessible et utilisable de manière externe à la classe, ce qui est souvent 
         //nécessaire pour interagir avec les objets de cette classe dans d'autres parties du code.
- 
-        //   -----------------------------------------------------------------------------------
-       
+    //   -----------------------------------------------------------------------------------
         //Création en code de toutes les tables qui ont été crées ds la BDD avec toutes les jointures
         $req = "SELECT * FROM animal a inner join famille f on f.famille_id = a.famille_id 
                                        inner join animal_continent ac on ac.animal_id = a.animal_id 
                                        inner join continent c on c.continent_id = ac.continent_id" . $whereClause; 
-   
-   //   "SELECT * FROM animal" : Sélectionne toutes les colonnes de la table "animal".
+    //   "SELECT * FROM animal" : Sélectionne toutes les colonnes de la table "animal".
     //   "inner join famille f on f.famille_id = a.famille_id" : Effectue une jointure interne 
     //   (INNER JOIN) avec la table "famille" en utilisant la clé étrangère "famille_id" présente dans
     //    la table "animal".
