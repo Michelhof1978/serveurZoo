@@ -6,7 +6,7 @@ class APIManager extends Model{//Système d héritage avec extends
            
         //...............................................................................
         $whereClause = "";//FILTRE DU SERVEUR !!!méthode accessible et utilisable de manière externe à la classe, ce qui est souvent
-                 if ($idFamille !== -1 || $idContinent !== -1)   $whereClause .= " WHERE ";
+                 if ($idFamille !== -1 || $idContinent !== -1)   $whereClause = " WHERE ";
                  //$whereClause .= " WHERE " : Cela signifie que la variable $whereClause est concaténée avec la chaîne " WHERE ".
                  //Est ce que famille à au moins une valeur
                    

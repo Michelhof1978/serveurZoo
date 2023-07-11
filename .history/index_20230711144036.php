@@ -35,7 +35,6 @@ try{
                         $apiController->getAnimaux((int)$url[2], (int)$url[3]); // Les URL sont automatiquement en string, donc ici, on va les convertir en int
                     }
                     $apiController->getAnimaux($idFamille, $idContinent);
-                    
                     break;
                 //............................................................................
 
@@ -75,10 +74,9 @@ try{
 // 8. En cas d'exception, le code capture l'objet d'exception `$e` et récupère le message d'erreur à l'aide de la méthode `getMessage()`. Ce message est ensuite stocké dans la variable `$msg`.
 // 9. Enfin, le message d'erreur est affiché avec `echo $msg`.
 // Cela donne une structure de gestion d'une requête GET et de différentes actions à prendre en fonction de la valeur du paramètre "page" dans l'URL.
-
 //............................................................................
-
-// `FILTER_SANITIZE_URL` est une constante utilisée avec la fonction `filter_var()` pour filtrer une 
+/
+/ `FILTER_SANITIZE_URL` est une constante utilisée avec la fonction `filter_var()` pour filtrer une 
 // URL et supprimer tous les caractères non valides.
 
 // Lorsque vous utilisez `filter_var($_GET['page'], FILTER_SANITIZE_URL)`, cela signifie que vous

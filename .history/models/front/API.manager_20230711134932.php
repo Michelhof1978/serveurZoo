@@ -2,27 +2,21 @@
 
 require_once "models/Model.php";
 class APIManager extends Model{//Système d héritage avec extends
-    public function getDBAnimaux($idFamille, $idContinent){//L'utilisation du modificateur public permet de rendre la 
-           
-        //...............................................................................
-        $whereClause = "";//FILTRE DU SERVEUR !!!méthode accessible et utilisable de manière externe à la classe, ce qui est souvent
-                 if ($idFamille !== -1 || $idContinent !== -1)   $whereClause .= " WHERE ";
+    public function getDBAnimaux($idFamille, $idcontinent){//L'utilisation du modificateur public permet de rendre la 
+            $whereClause = "";//méthode accessible et utilisable de manière externe à la classe, ce qui est souvent
+                 if ($idFamille !== -1 || $idcontinent !== -1)   $whereClause = " WHERE ";
                  //$whereClause .= " WHERE " : Cela signifie que la variable $whereClause est concaténée avec la chaîne " WHERE ".
                  //Est ce que famille à au moins une valeur
                    
                      if ($idFamille !== -1)  $whereClause = " f.famille_id = :idFamille ";
                      //$whereClause .= " f.famille_id = :idFamille " : Cela signifie que la variable $whereClause est concaténée avec la chaîne " f.famille_id = :idFamille ".
-                        
-                      if ($idFamille !== -1 && $idContinent !== -1) $whereClause .= " AND ";
-                     
-                     if ($idContinent !== -1) $whereClause = " c.continent_id = :idContinent ";//Les :idFamille vont être renseignés ds bibValue ci dessous
+                        if ($idContinent !== -1) $whereClause = " _id = :idFamille ";//Les :idFamille vont être renseignés ds bibValue ci dessous
                         //Est ce que continent à au moins une valeur
-
-                        //END FILTRE DU SERVEUR !!!   
+                            
                         
                      //méthode accessible et utilisable de manière externe à la classe, ce qui est souvent 
         //nécessaire pour interagir avec les objets de cette classe dans d'autres parties du code.
-    //   -----------------------------------------------------------------------------------
+    //   -------------------------
         //Création en code de toutes les tables qui ont été crées ds la BDD avec toutes les jointures
         $req = "SELECT * FROM animal a inner join famille f on f.famille_id = a.famille_id 
                                        inner join animal_continent ac on ac.animal_id = a.animal_id 
@@ -43,17 +37,10 @@ class APIManager extends Model{//Système d héritage avec extends
     //      famille et aux continents auxquels ils appartiennent.
     //   -------------------------
         $stmt = $this-> getBdd()->prepare($req);//préparer une requête SQL à exécuter sur une base de données.
-        if ($idFamille !== -1) {//FILTRE DU SERVEUR !!!//Est ce que famille à au moins une valeur
+        if ($idFamille !== -1) {//Est ce que famille à au moins une valeur
             $stmt->bindValue(":idFamille",$idFamille,PDO::PARAM_INT);//BindValue() est une méthode pour lier un paramètre nommé ":idFamille" à la valeur de la variable "$idFamille". Cette méthode est utilisée dans le contexte des requêtes préparées pour associer une valeur à un paramètre nommé dans la requête SQL.
             // PDO::PARAM_INT est utilisée pour indiquer que le paramètre nommé ":idFamille" doit être traité comme un entier lors de l'exécution de la requête. Cela peut être utile si vous souhaitez vous assurer que la valeur passée à ce paramètre est interprétée comme un entier, même si elle est initialement une chaîne de caractères ou un autre type de données.
         }
-
-        if ($idContinent !== -1) {//Est ce que continent à au moins une valeur
-            $stmt->bindValue(":idContinent",$idContinent,PDO::PARAM_INT);//BindValue() est une méthode pour lier un paramètre nommé ":idContinent" à la valeur de la variable "$idContinent". Cette méthode est utilisée dans le contexte des requêtes préparées pour associer une valeur à un paramètre nommé dans la requête SQL.
-            // PDO::PARAM_INT est utilisée pour indiquer que le paramètre nommé ":idContinent" doit être traité comme un entier lors de l'exécution de la requête. Cela peut être utile si vous souhaitez vous assurer que la valeur passée à ce paramètre est interprétée comme un entier, même si elle est initialement une chaîne de caractères ou un autre type de données.
-        }
-// END FILTRE DU SERVEUR !!!
-
         // Voici une explication ligne par ligne :
         //  $stmt est une variable qui sera utilisée pour stocker la requête préparée.
         // $this fait référence à l'objet actuel, c'est-à-dire à l'objet dans lequel cette ligne de

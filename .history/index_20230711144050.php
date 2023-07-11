@@ -35,7 +35,6 @@ try{
                         $apiController->getAnimaux((int)$url[2], (int)$url[3]); // Les URL sont automatiquement en string, donc ici, on va les convertir en int
                     }
                     $apiController->getAnimaux($idFamille, $idContinent);
-                    
                     break;
                 //............................................................................
 

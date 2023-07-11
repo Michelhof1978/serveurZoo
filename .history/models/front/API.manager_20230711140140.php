@@ -2,18 +2,18 @@
 
 require_once "models/Model.php";
 class APIManager extends Model{//Système d héritage avec extends
-    public function getDBAnimaux($idFamille, $idContinent){//L'utilisation du modificateur public permet de rendre la 
+    public function getDBAnimaux($idFamille, $idcontinent){//L'utilisation du modificateur public permet de rendre la 
            
         //...............................................................................
         $whereClause = "";//FILTRE DU SERVEUR !!!méthode accessible et utilisable de manière externe à la classe, ce qui est souvent
-                 if ($idFamille !== -1 || $idContinent !== -1)   $whereClause .= " WHERE ";
+                 if ($idFamille !== -1 || $idcontinent !== -1)   $whereClause = " WHERE ";
                  //$whereClause .= " WHERE " : Cela signifie que la variable $whereClause est concaténée avec la chaîne " WHERE ".
                  //Est ce que famille à au moins une valeur
                    
                      if ($idFamille !== -1)  $whereClause = " f.famille_id = :idFamille ";
                      //$whereClause .= " f.famille_id = :idFamille " : Cela signifie que la variable $whereClause est concaténée avec la chaîne " f.famille_id = :idFamille ".
                         
-                      if ($idFamille !== -1 && $idContinent !== -1) $whereClause .= " AND ";
+                      if ($idFamille !== -1 && $idcontinent !== -1) $whereClause .= " AND ";
                      
                      if ($idContinent !== -1) $whereClause = " c.continent_id = :idContinent ";//Les :idFamille vont être renseignés ds bibValue ci dessous
                         //Est ce que continent à au moins une valeur
