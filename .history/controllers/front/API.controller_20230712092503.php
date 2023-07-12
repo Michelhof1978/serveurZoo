@@ -19,15 +19,10 @@ class APIController {
 //  spécifiques liées à l'API dans votre classe. En initialisant la propriété $apiManager dans le constructeur, vous
 //   pouvez vous assurer que cette ressource est disponible dès la création de chaque objet de la classe.
 
-        //FILTRE SERVEUR ID FAMILLE ET ID CONTINENT
-//on récupére les id en paramétre de la fonction getAnimaux
-public function getAnimaux($idFamille, $idContinent){
+                                        //FILTRE SERVEUR ID FAMILLE ET ID CONTINENT
+public function getAnimaux($idFamille, $idContinent){//on récupére les id en paramétre de la fonction getAnimaux
 
- //on crée une nouvelle variable animaux pour récupérer toutes les datas de la BDD des animaux que le manager s'occupera de récupérer
-        $animaux = $this->apiManager->getDBAnimaux($idFamille, $idContinent);
-        
-        //FIN FILTRE SERVEUR ID FAMILLE ET ID CONTINENT
-
+        $animaux = $this->apiManager->getDBAnimaux($idFamille, $idContinent);//on crée une nouvelle variable animaux pour récupérer toutes les datas de la BDD des animaux que le manager s'occupera de récupérer
         $tabResultat = $this->formatDataLignesAnimaux($animaux);
 
     // echo "<pre>";//pour formater et afficher les données de sortie de manière lisible.

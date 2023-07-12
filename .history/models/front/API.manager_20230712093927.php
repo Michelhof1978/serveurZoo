@@ -97,8 +97,7 @@ public function getDBAnimal($idAnimal){
     --  FILTRE DU SERVEUR
 --  // Système de filtrage avec WHERE, on récupèrera uniquepment la valeur choisi ds la table animal: on récupèrera uniquement ce que l on a besoin ds la table et non tout.
              WHERE a.animal_id = :idAnimal ";
-    //  FIN FILTRE DU SERVEUR
-
+     --  FILTRE DU SERVEUR
     $stmt = $this -> getBdd()->prepare($req);
 
     //FILTRE DU SERVEUR: idAnimal

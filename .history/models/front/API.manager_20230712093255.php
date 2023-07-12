@@ -7,10 +7,8 @@ class APIManager extends Model{//Système d héritage avec extends
         //AJOUT FILTRE DU SERVEUR URL
             //On récupére ci-dessus idFamille et idContinent ds getDBAnimaux et s 'ils ont la valeur -1, on fera la requête ($req)  ci-dessous
         
-//Si tous les animaux qui sont des mammifères avec http://localhost/serveurZoo/front/animaux/1/-1 1 = famille  -1 = continent
-//Si on veut tous les animaux en Europe, on tape ds l url http://localhost/serveurZoo/front/animaux/-1/1
-           
-                //Construction d une requête $whereClause (dynamique)
+            //On récupére tous les animaux qui sont des mammifères avec http://localhost/serveurZoo/front/animaux/1/-1 1 = famille  -1 = continent
+            //Construction d une requête $whereClause (dynamique)
             $whereClause = "";//On la concaténera ds la requête $req ci-dessous avec la table continent.Elle devra contenir le mot clé WHERE mais seulement si on a -1 ds les 2 champs idFamille et idContinent
 
                 //Est ce que famille ou continent est différent de -1 donc qu il à au moins 1 des 2 qui ont une valeur, si c'est le cas, on mettra ds notre whereClause le mot clé WHERE pour rajouter un filtre
@@ -93,12 +91,8 @@ public function getDBAnimal($idAnimal){
              inner join famille f ON f.famille_id = a.famille_id 
              inner join animal_continent ac ON ac.animal_id = a.animal_id 
              inner join continent c ON c.continent_id = ac.continent_id
-
-    --  FILTRE DU SERVEUR
---  // Système de filtrage avec WHERE, on récupèrera uniquepment la valeur choisi ds la table animal: on récupèrera uniquement ce que l on a besoin ds la table et non tout.
-             WHERE a.animal_id = :idAnimal ";
-    //  FIN FILTRE DU SERVEUR
-
+             WHERE a.animal_id = :idAnimal ";// Système de filtrage avec WHERE, on récupèrera uniquepment la valeur choisi ds la table animal: on récupèrera uniquement ce que l on a besoin ds la table et non tout.
+    
     $stmt = $this -> getBdd()->prepare($req);
 
     //FILTRE DU SERVEUR: idAnimal

@@ -33,7 +33,7 @@ try{
                         // Est ce que j ai quelque chose en position 2 ou 3 de l'URL ? Si non, le bloc de code suivant sera exécuté.
                         $apiController->getAnimaux(-1, -1);//Comme modification ds ma requête, On récupèrera les infos de tous les animaux peut importe la famille -1 et continent -1 grâce API.controller.php 
                     } else {
-                        // Si ces informations sont bien renseignées ci dessus, alors on appelle la fonction getAnimaux mais en envoyant les infos transmis ds url 2 et 3
+                        // Si ces informations sont
                         $apiController->getAnimaux((int)$url[2], (int)$url[3]); // Les URL sont automatiquement en string, donc ici, on va les convertir en int
                     }
                     $apiController->getAnimaux($idFamille, $idContinent);

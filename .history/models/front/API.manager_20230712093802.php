@@ -94,11 +94,8 @@ public function getDBAnimal($idAnimal){
              inner join animal_continent ac ON ac.animal_id = a.animal_id 
              inner join continent c ON c.continent_id = ac.continent_id
 
-    --  FILTRE DU SERVEUR
---  // Système de filtrage avec WHERE, on récupèrera uniquepment la valeur choisi ds la table animal: on récupèrera uniquement ce que l on a besoin ds la table et non tout.
              WHERE a.animal_id = :idAnimal ";
-    //  FIN FILTRE DU SERVEUR
-
+    
     $stmt = $this -> getBdd()->prepare($req);
 
     //FILTRE DU SERVEUR: idAnimal

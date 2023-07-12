@@ -3,29 +3,24 @@
 require_once "models/Model.php";
 class APIManager extends Model{//Système d héritage avec extends
     public function getDBAnimaux($idFamille, $idContinent){//L'utilisation du modificateur public permet de rendre la 
-            
-        //AJOUT FILTRE DU SERVEUR URL
+            //FILTRE DU SERVEUR URL
             //On récupére ci-dessus idFamille et idContinent ds getDBAnimaux et s 'ils ont la valeur -1, on fera la requête ($req)  ci-dessous
         
-//Si tous les animaux qui sont des mammifères avec http://localhost/serveurZoo/front/animaux/1/-1 1 = famille  -1 = continent
-//Si on veut tous les animaux en Europe, on tape ds l url http://localhost/serveurZoo/front/animaux/-1/1
-           
-                //Construction d une requête $whereClause (dynamique)
+            //Construction d une requête $whereClause (dynamique)
             $whereClause = "";//On la concaténera ds la requête $req ci-dessous avec la table continent.Elle devra contenir le mot clé WHERE mais seulement si on a -1 ds les 2 champs idFamille et idContinent
 
-                //Est ce que famille ou continent est différent de -1 donc qu il à au moins 1 des 2 qui ont une valeur, si c'est le cas, on mettra ds notre whereClause le mot clé WHERE pour rajouter un filtre
+                    
                  if ($idFamille !== -1 || $idContinent !== -1)   $whereClause .= " WHERE ";
                  //$whereClause .= " WHERE " : Cela signifie que la variable $whereClause est concaténée avec la chaîne " WHERE ".
                  
-                   //Si c'est juste famille qui est différent de -1, on renseignera :idFamille ds bibValue ci dessous
+                   
                      if ($idFamille !== -1)  $whereClause = " f.famille_id = :idFamille ";
-                     
-                    //Pour combiner les 2 filtres (valeur famille et valeur continent) ds la clause WHERE, on rajoutera le mot clé AND, il faudra que AND soit ajouter entre les 2 valeurs continent et famille uniquement que si jamais les 2 valeurs sont différentes de -1
+                     //$whereClause .= " f.famille_id = :idFamille " : Cela signifie que la variable $whereClause est concaténée avec la chaîne " f.famille_id = :idFamille ".
+                        
                       if ($idFamille !== -1 && $idContinent !== -1) $whereClause .= " AND ";
                      
-                      //Est ce que Continent à au moins une valeur
-                     if ($idContinent !== -1) $whereClause = " c.continent_id = :idContinent ";
-                    //Les :idFamille vont être renseignés ds bibValue ci dessous
+                     if ($idContinent !== -1) $whereClause = " c.continent_id = :idContinent ";//Les :idFamille vont être renseignés ds bibValue ci dessous
+                        //Est ce que continent à au moins une valeur
 
         // FIN FILTRE DU SERVEUR URL   
                         
@@ -55,18 +50,15 @@ class APIManager extends Model{//Système d héritage avec extends
     //      famille et aux continents auxquels ils appartiennent.
     //   -------------------------
         $stmt = $this-> getBdd()->prepare($req);//préparer une requête SQL à exécuter sur une base de données.
-        
-//FILTRE DU SERVEUR 
-        if ($idFamille !== -1) $stmt->bindValue(":idFamille", $idFamille, PDO::PARAM_INT) ;
-           //BindValue() est une méthode pour lier un paramètre nommé ":idFamille" à la valeur de la variable "$idFamille". Cette méthode est utilisée dans le contexte des requêtes préparées pour associer une valeur à un paramètre nommé dans la requête SQL.
+        if ($idFamille !== -1) {//FILTRE DU SERVEUR !!!//Est ce que famille à au moins une valeur
+            $stmt->bindValue(":idFamille",$idFamille,PDO::PARAM_INT);//BindValue() est une méthode pour lier un paramètre nommé ":idFamille" à la valeur de la variable "$idFamille". Cette méthode est utilisée dans le contexte des requêtes préparées pour associer une valeur à un paramètre nommé dans la requête SQL.
             // PDO::PARAM_INT est utilisée pour indiquer que le paramètre nommé ":idFamille" doit être traité comme un entier lors de l'exécution de la requête. Cela peut être utile si vous souhaitez vous assurer que la valeur passée à ce paramètre est interprétée comme un entier, même si elle est initialement une chaîne de caractères ou un autre type de données.
-        
+        }
 
-        if ($idContinent !== -1) //Est ce que continent à au moins une valeur
-            $stmt->bindValue(":idContinent",$idContinent,PDO::PARAM_INT);
-    //BindValue() est une méthode pour lier un paramètre nommé ":idContinent" à la valeur de la variable "$idContinent". Cette méthode est utilisée dans le contexte des requêtes préparées pour associer une valeur à un paramètre nommé dans la requête SQL.
-    // PDO::PARAM_INT est utilisée pour indiquer que le paramètre nommé ":idContinent" doit être traité comme un entier lors de l'exécution de la requête. Cela peut être utile si vous souhaitez vous assurer que la valeur passée à ce paramètre est interprétée comme un entier, même si elle est initialement une chaîne de caractères ou un autre type de données.
-        
+        if ($idContinent !== -1) {//Est ce que continent à au moins une valeur
+            $stmt->bindValue(":idContinent",$idContinent,PDO::PARAM_INT);//BindValue() est une méthode pour lier un paramètre nommé ":idContinent" à la valeur de la variable "$idContinent". Cette méthode est utilisée dans le contexte des requêtes préparées pour associer une valeur à un paramètre nommé dans la requête SQL.
+            // PDO::PARAM_INT est utilisée pour indiquer que le paramètre nommé ":idContinent" doit être traité comme un entier lors de l'exécution de la requête. Cela peut être utile si vous souhaitez vous assurer que la valeur passée à ce paramètre est interprétée comme un entier, même si elle est initialement une chaîne de caractères ou un autre type de données.
+        }
 // END FILTRE DU SERVEUR !!!
 
         // Voici une explication ligne par ligne :
@@ -93,19 +85,11 @@ public function getDBAnimal($idAnimal){
              inner join famille f ON f.famille_id = a.famille_id 
              inner join animal_continent ac ON ac.animal_id = a.animal_id 
              inner join continent c ON c.continent_id = ac.continent_id
-
-    --  FILTRE DU SERVEUR
---  // Système de filtrage avec WHERE, on récupèrera uniquepment la valeur choisi ds la table animal: on récupèrera uniquement ce que l on a besoin ds la table et non tout.
-             WHERE a.animal_id = :idAnimal ";
-    //  FIN FILTRE DU SERVEUR
-
-    $stmt = $this -> getBdd()->prepare($req);
-
-    //FILTRE DU SERVEUR: idAnimal
-    $stmt->bindValue(":idAnimal",$idAnimal,PDO::PARAM_INT);
-    //BindValue() est une méthode pour lier un paramètre nommé ":idAnimal" à la valeur de la variable "$idAnimal". Cette méthode est utilisée dans le contexte des requêtes préparées pour associer une valeur à un paramètre nommé dans la requête SQL.
-    // PDO::PARAM_INT est utilisée pour indiquer que le paramètre nommé ":idAnimal" doit être traité comme un entier lors de l'exécution de la requête. Cela peut être utile si vous souhaitez vous assurer que la valeur passée à ce paramètre est interprétée comme un entier, même si elle est initialement une chaîne de caractères ou un autre type de données.
+             WHERE a.animal_id = :idAnimal ";// Système de filtrage avec WHERE, on récupèrera uniquepment la valeur choisi ds la table animal: on récupèrera uniquement ce que l on a besoin ds la table et non tout.
     
+    $stmt = $this -> getBdd()->prepare($req);
+    $stmt->bindValue(":idAnimal",$idAnimal,PDO::PARAM_INT);//BindValue() est une méthode pour lier un paramètre nommé ":idAnimal" à la valeur de la variable "$idAnimal". Cette méthode est utilisée dans le contexte des requêtes préparées pour associer une valeur à un paramètre nommé dans la requête SQL.
+    // PDO::PARAM_INT est utilisée pour indiquer que le paramètre nommé ":idAnimal" doit être traité comme un entier lors de l'exécution de la requête. Cela peut être utile si vous souhaitez vous assurer que la valeur passée à ce paramètre est interprétée comme un entier, même si elle est initialement une chaîne de caractères ou un autre type de données.
     $stmt->execute();//execute() est une méthode appelée sur l'objet de requête préparée ($stmt). Cette méthode exécute la requête préparée avec les paramètres éventuellement liés à des valeurs spécifiques.
         $lignesAnimal = $stmt->fetchAll(PDO::FETCH_ASSOC);//On récupère toutes les dates et on va les mettre ds la variable lignesAnimal
         $stmt->closeCursor();//cette ligne de code est utilisée pour fermer le curseur de la requête après avoir récupéré les résultats. Cela permet de libérer les ressources utilisées par la requête sur le serveur de base de données.
