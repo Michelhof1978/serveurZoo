@@ -1,4 +1,7 @@
  <?php
+ header("Access-Control-Allow-Origin: http://localhost:3000");
+ header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+ header("Access-Control-Allow-Headers: Content-Type");
  
 require_once "models/front/API.manager.php"; //On fait appel à modéle pour pouvoir récupérer les données via le controller ci dessous
 require_once "models/Model.php";

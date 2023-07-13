@@ -20,7 +20,7 @@ try{
 
         switch($url[0]){
 
-            case "front" : //http://localhost:8000/serveuranimaux/front/test
+            case "front" : ;//http://localhost:8000/serveuranimaux/front/test
                 switch($url[1]){//On va vérifier la valeur du 2 ème champs (position 1 ds tableau) après le / ds l url
                    //front[0], animaux[0], animal, continents, familles[1]
                   
@@ -63,7 +63,6 @@ try{
     $msg = $e->getMessage();
     echo $msg;
 }
-?>
 
 //............................................................................
 // Exemple de gestion d'une requête GET dans un script PHP. Il vérifie la valeur du paramètre `$_GET['page']` et effectue différentes actions en fonction de cette valeur. Permettez-moi de vous expliquer étape par étape :

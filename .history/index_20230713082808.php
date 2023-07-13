@@ -34,7 +34,6 @@ try{
                         // Si ces informations sont bien renseignées ci dessus, alors on appelle la fonction getAnimaux mais en envoyant les infos transmis ds url 2 et 3
                         $apiController->getAnimaux((int)$url[2], (int)$url[3]); // Les URL sont automatiquement en string, donc ici, on va les convertir en int
                     }
-                    $apiController->getAnimaux($idFamille, $idContinent);
                     
                     break;
 

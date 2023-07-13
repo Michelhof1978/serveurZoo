@@ -23,10 +23,6 @@ abstract class Model {//En héritant de la classe abstraite "Model", les classes
     public static function sendJSON($info){//Transformer les datas en format JSON pour API
         header("Access-Control-Allow-Origin: *");//Permettra à n'importe qui de l extérieur à accéder aux données JSON, * veut dire que tout le monde peut y accéder, si c'est uniquement pour un site, on remplacera * par l URL du site
         header("content-Type: application/json");
-        header("Access-Control-Allow-Origin: http://localhost:3000");
-        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-        
-
             //              La ligne de code "header("content-Type: application/json");" en français signifie que l'en-tête de la 
             //              réponse HTTP va indiquer que le contenu de la réponse est de type JSON. Voici une explication de chaque 
             //              terme :
@@ -46,7 +42,7 @@ abstract class Model {//En héritant de la classe abstraite "Model", les classes
     }
 }
 
-?>
+?
 // PDO (PHP Data Objects) est une extension PHP qui fournit une interface pour accéder aux bases de données.
 //  Elle permet d'interagir avec différentes bases de données, telles que MySQL, PostgreSQL, SQLite, etc., en
 //   utilisant une interface unifiée.

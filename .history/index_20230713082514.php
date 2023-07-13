@@ -20,7 +20,7 @@ try{
 
         switch($url[0]){
 
-            case "front" : //http://localhost:8000/serveuranimaux/front/test
+            case "front" : ;//http://localhost:8000/serveuranimaux/front/test
                 switch($url[1]){//On va vérifier la valeur du 2 ème champs (position 1 ds tableau) après le / ds l url
                    //front[0], animaux[0], animal, continents, familles[1]
                   

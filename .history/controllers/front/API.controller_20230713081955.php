@@ -1,11 +1,7 @@
- <?php
- 
+{# <?php
 require_once "models/front/API.manager.php"; //On fait appel à modéle pour pouvoir récupérer les données via le controller ci dessous
 require_once "models/Model.php";
-
-
 class APIController {
-    
     private $apiManager;
 
     public function __construct(){
@@ -75,9 +71,6 @@ private function formatDataLignesAnimaux($lignes){
 
     return $tab;
 }
-
-
-
 // La fonction "formatDataLignesAnimaux" ci dessus est une méthode privée qui prend en paramètre 
 //un tableau de lignes de données. 
 // Elle formate ces données dans une structure spécifique et renvoie un nouveau tableau.

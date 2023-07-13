@@ -1,4 +1,4 @@
-<?php
+{# <?php
 //Connection sécurisée à la BDD grâce à PDO
 abstract class Model {//En héritant de la classe abstraite "Model", les classes enfants peuvent étendre ou modifier le comportement
                       //de base défini dans la classe parente, en ajoutant des méthodes spécifiques à leurs besoins ou en redéfinissant des méthodes 
@@ -23,10 +23,6 @@ abstract class Model {//En héritant de la classe abstraite "Model", les classes
     public static function sendJSON($info){//Transformer les datas en format JSON pour API
         header("Access-Control-Allow-Origin: *");//Permettra à n'importe qui de l extérieur à accéder aux données JSON, * veut dire que tout le monde peut y accéder, si c'est uniquement pour un site, on remplacera * par l URL du site
         header("content-Type: application/json");
-        header("Access-Control-Allow-Origin: http://localhost:3000");
-        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-        
-
             //              La ligne de code "header("content-Type: application/json");" en français signifie que l'en-tête de la 
             //              réponse HTTP va indiquer que le contenu de la réponse est de type JSON. Voici une explication de chaque 
             //              terme :
@@ -46,7 +42,7 @@ abstract class Model {//En héritant de la classe abstraite "Model", les classes
     }
 }
 
-?>
+
 // PDO (PHP Data Objects) est une extension PHP qui fournit une interface pour accéder aux bases de données.
 //  Elle permet d'interagir avec différentes bases de données, telles que MySQL, PostgreSQL, SQLite, etc., en
 //   utilisant une interface unifiée.
@@ -98,4 +94,4 @@ abstract class Model {//En héritant de la classe abstraite "Model", les classes
 // Ces points couvrent les bases de l'utilisation de PDO en PHP. PDO offre également d'autres fonctionnalités avancées
 //  telles que la gestion des transactions, les requêtes préparées avec résultats multiples, les pilotes de base de 
 //  données personnalisés, etc. Consultez la documentation officielle de PHP pour plus d'informations sur l'utilisation
-//   de PDO.
+//   de PDO. #}
